@@ -1,0 +1,18 @@
+[
+  {
+    "id": "b33d0047-0f6e-41b2-8156-8628d549c09f",
+    "products": [
+      {
+        "id": "b6cb1e1c-3a62-4471-80d5-bce69f981961",
+        "title": "Remera Gris",
+        "description": "Remera de calidad Premium",
+        "price": "600",
+        "status": true,
+        "stock": 27,
+        "category": "Remeras",
+        "thumbnails": [],
+        "quantity": 1
+      }
+    ]
+  }
+]
