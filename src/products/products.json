@@ -1,42 +1,32 @@
 [
-    {
-        "id": "e2eb4107-5674-4ba1-bc65-0bbd4dfc031b",
-        "title": "Remera Negra",
-        "description": "Remera de calidad Premium",
-        "price": 500,
-        "status": true,
-        "stock": 30,
-        "category": "Remeras",
-        "thumbnails": []
-    },
-    {
-        "id": "61606594-13bb-4d81-b401-f603521a3bb6",
-        "title": "Remera Blanca",
-        "description": "Remera de calidad Premium",
-        "price": 450,
-        "status": true,
-        "stock": 25,
-        "category": "Remeras",
-        "thumbnails": []
-    },
-    {
-        "id": "5a64761e-e7b1-41db-8f9d-c832526dd2c2",
-        "title": "Remera Verde",
-        "description": "Remera de calidad Premium",
-        "price": 475,
-        "status": true,
-        "stock": 27,
-        "category": "Remeras",
-        "thumbnails": []
-    },
-    {
-        "id": "b6cb1e1c-3a62-4471-80d5-bce69f981961",
-        "title": "Remera Gris",
-        "description": "Remera de calidad Premium",
-        "price": "600",
-        "status": true,
-        "stock": 27,
-        "category": "Remeras",
-        "thumbnails": []
-    }
+  {
+    "id": "7dfb708f-795f-4cc0-a982-eb1510d5dbc9",
+    "title": "aaaa",
+    "description": "aaa",
+    "price": 22,
+    "status": true,
+    "stock": 10,
+    "category": "Sin categoría",
+    "thumbnail": "default-product.png"
+  },
+  {
+    "id": "cde3acc4-2844-4eea-ac53-f8d53edb7509",
+    "title": "123123",
+    "description": "23123",
+    "price": 1231,
+    "status": true,
+    "stock": 10,
+    "category": "Sin categoría",
+    "thumbnail": "default-product.png"
+  },
+  {
+    "id": "c9ad145f-fa3b-4f50-a2b8-4f82f58ef7a4",
+    "title": "2341",
+    "description": "12412",
+    "price": 4124,
+    "status": true,
+    "stock": 10,
+    "category": "Sin categoría",
+    "thumbnail": "default-product.png"
+  }
 ]

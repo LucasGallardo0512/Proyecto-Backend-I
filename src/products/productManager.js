@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import path from 'path';
 import crypto from 'crypto';
 
 class ProductManager {
@@ -44,15 +45,7 @@ class ProductManager {
     }
 
     async addProduct(newProduct) {
-        const requiredFields = [
-            'title',
-            'description',
-            'price',
-            'status',
-            'stock',
-            'category',
-            'thumbnails',
-        ];
+        const requiredFields = ['title', 'description', 'price'];
 
         for (const field of requiredFields) {
             if (newProduct[field] === undefined || newProduct[field] === null) {
@@ -72,37 +65,22 @@ class ProductManager {
         ) {
             throw new Error('La descripción debe ser un texto no vacío');
         }
-        if (typeof newProduct.price !== 'number' || newProduct.price < 0) {
+        if (isNaN(newProduct.price) || Number(newProduct.price) <= 0) {
             throw new Error('El precio debe ser un número positivo');
         }
-        if (typeof newProduct.status !== 'boolean') {
-            throw new Error('El campo "status" debe ser booleano (true/false)');
-        }
-        if (typeof newProduct.stock !== 'number' || newProduct.stock < 0) {
-            throw new Error('El stock debe ser un número positivo');
-        }
-        if (
-            typeof newProduct.category !== 'string' ||
-            newProduct.category.trim() === ''
-        ) {
-            throw new Error('La categoría debe ser un texto no vacío');
-        }
-        if (!Array.isArray(newProduct.thumbnails)) {
-            throw new Error('El campo "thumbnails" debe ser un array');
-        }
 
-        const products = await this.getProducts();
         const product = {
             id: this.createId(),
             title: newProduct.title.trim(),
             description: newProduct.description.trim(),
-            price: newProduct.price,
-            status: newProduct.status,
-            stock: newProduct.stock,
-            category: newProduct.category.trim(),
-            thumbnails: newProduct.thumbnails,
+            price: Number(newProduct.price),
+            status: true,
+            stock: 10,
+            category: 'Sin categoría',
+            thumbnail: newProduct.thumbnail || 'default-product.png',
         };
 
+        const products = await this.getProducts();
         products.push(product);
         await this.writeFile(products);
 
@@ -129,6 +107,29 @@ class ProductManager {
 
         const [deletedProduct] = products.splice(index, 1);
         await this.writeFile(products);
+
+        try {
+            if (
+                deletedProduct.thumbnail &&
+                deletedProduct.thumbnail !== 'default-product.png'
+            ) {
+                const imagePath = path.resolve(
+                    './public/img/img-products',
+                    deletedProduct.thumbnail
+                );
+
+                if (
+                    imagePath.includes(
+                        path.resolve('./public/img/img-products')
+                    )
+                ) {
+                    await fs.unlink(imagePath);
+                }
+            }
+        } catch (error) {
+            throw new Error('No se pudo eliminar la imagen: ${error.message}');
+        }
+
         return deletedProduct;
     }
 }
